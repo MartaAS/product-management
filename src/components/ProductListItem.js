@@ -1,57 +1,69 @@
 import React from 'react';
-import firebase from 'firebase';
 
 export default class ProductListItem extends React.Component {
   
+  validate(){
+    let errorValidate = false;
+
+    if(this.name.value === ''){
+      errorValidate = true;
+    }
+
+    if(this.description.value === ''){
+      errorValidate = true;
+    } 
+    
+    if(this.stock.value === ''){
+      errorValidate = true;
+    }
+    
+    if(errorValidate){
+      alert('No se han rellenado todos los campos')
+    }
+
+    if (!/^([0-9])*$/.test(this.stock.value)){
+      alert('rellene el campo stock con un valor numérico')
+      errorValidate = true;
+    }
+
+    return errorValidate;
+  }
+
   onEdit = () => {
-
-    const product = {
-      id : this.props.id,
-      name : document.getElementById('nameEdit').value,
-      description : document.getElementById('descriptionEdit').value,
-      stock : document.getElementById('stockEdit').value
-    };
-
-    //Validacion edicion valores
-
-    //Llamada a firebase, actualizar
-    firebase.database().ref('products/' + this.props.id).set({
-      name: product.name,
-      description: product.description,
-      stock: product.stock,
-      image: this.props.image
-    })
-  
-    //{this.props.handleClick}
-    this.props.onEditProduct()    
-
+    if(!this.validate()){
+      const product = {
+        id : this.props.id,
+          name : this.name.value,
+          description : this.description.value,
+          stock : this.stock.value
+      }
+      this.props.onEdit(product);  
   } 
-  
+}
 
+  onDelete = () => {
+    this.props.onRemove(this.props.id);
+  }
+  
   render(){
     return(
       <li>
         <div className="product-item">
-          <p>{this.props.id}</p>
           <p>{this.props.name}</p>
           <p>{this.props.description}</p>
           <p>{this.props.stock}</p>
           <p>{this.props.image}</p>
-          <button className="" id={this.props.id} >
-          Editar
-          </button>
+          <button className="" id={this.props.id}>Editar</button>
         </div>
         <div className="product-details">
-          <input type="text" id="nameEdit" placeholder={this.props.name} />
-          <input type="text" id="descriptionEdit" placeholder={this.props.description} />
-          <input type="text" id="stockEdit" placeholder={this.props.stock} />
+          <input type="text" name="name" placeholder={this.props.name} ref={(c) => this.name = c} />
+          <input type="text" name="description" placeholder={this.props.description} ref={(c) => this.description = c} />
+          <input type="text" name="stock" placeholder={this.props.stock} ref={(c) => this.stock = c} />
           <p>{this.props.image}</p>
-          <button className="" onClick={this.onEdit} id="edit">
-          Guardar
-          </button> 
-        </div>
-      </li>
-      
+          <button className="" onClick={this.onEdit} id="">Guardar</button>           
+        </div>        
+        <button className="" onClick={this.onDelete} id="">Eliminar</button> 
+      </li>      
     )
   }
 }
