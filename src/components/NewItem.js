@@ -43,10 +43,17 @@ export default class NewItem extends React.Component {
 
   showContentNewProduct(){
     document.getElementsByClassName('container__form-newProduct')[0].classList.remove('hidden')
+    var newProductInputName = document.getElementsByClassName('new__product-formName')[0];
+    var newProductInputDescription = document.getElementsByClassName('new__product-formDescription')[0];
+    var newProductInputStock = document.getElementsByClassName('new__product-formStock')[0];
+    newProductInputName.value = "";
+    newProductInputDescription.value = "";
+    newProductInputStock.value = "";
   }
 
   hiddenContentNewProduct(){
     document.getElementsByClassName('container__form-newProduct')[0].classList.add('hidden')
+    
   }
 
   render(){
@@ -57,9 +64,9 @@ export default class NewItem extends React.Component {
           Nuevo
         </button>
         <div className="container__form-newProduct hidden">
-          <input type="text" placeholder='Nombre' ref={(c) => this.name = c} />
-          <input type="text" placeholder='description' ref={(c) => this.description = c} />
-          <input type="text" placeholder='stock' ref={(c) => this.stock = c} />
+          <input className="new__product-formName" type="text" placeholder='Nombre' ref={(c) => this.name = c} />
+          <input className="new__product-formDescription" type="text" placeholder='description' ref={(c) => this.description = c} />
+          <input className="new__product-formStock" type="text" placeholder='stock' ref={(c) => this.stock = c} />
           <button className="btn__addNewProduct btn" onClick={this.onInsertNew}>
             <div className="icon__save"></div>
             guardar
