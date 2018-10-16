@@ -41,7 +41,6 @@ export default class App extends Component {
         name: snapshot.val().name,
         description: snapshot.val().description,
         stock: snapshot.val().stock,
-        image: snapshot.val().image        
       })
       this.setState({allProducts});
     })
@@ -52,7 +51,7 @@ export default class App extends Component {
           allProducts.splice(i,1);
         }
       }
-    this.setState({allProducts});
+      this.setState({allProducts});
     })
 
     firebase.database().ref('products').on('child_changed', snapshot => {
@@ -61,38 +60,43 @@ export default class App extends Component {
           allProducts[i].name = snapshot.val().name;
           allProducts[i].description = snapshot.val().description;
           allProducts[i].stock = snapshot.val().stock;
-          allProducts[i].image = snapshot.val().image;
         }
       }
-    this.setState({allProducts});
+      this.setState({allProducts});
     })
   }  
 
-  showContent(){
- document.getElementsByClassName('container__form-newProduct')[0].classList.remove('hidden')
+  showContent(id){
+    document.getElementById('container__product-edit-'+id).classList.remove('hidden')
   }
 
-  hiddenContent(){
-    document.getElementsByClassName('container__form-newProduct')[0].classList.add('hidden')
-
+  hiddenContent(id){
+    document.getElementById('container__product-edit-'+id).classList.add('hidden')
   }
   
 
   render() {
     return (
       <div className="App">
-        <header className="App-header">         
+        <header className="App-header">   
+          <h1 className="header__title">almacén de discos</h1>      
         </header>
+        <section className="bloq__principal">
+      <div className="bloq__principal-gradient">
+
+       <NewItem 
+          onInsertNew={this.handleInsert} 
+        />
         <ProductListContainer 
           allProducts={this.state.allProducts} 
           onRemove={this.handleRemove} 
-          onEdit={this.handleEdit}
-        />  
-        <NewItem 
-          onInsertNew={this.handleInsert} 
+          onSaveEditProduct={this.handleEdit}
           showContent={this.showContent} 
           hiddenContent={this.hiddenContent}
-        />
+        />  
+       
+        </div>
+        </section>
       </div>
     );
   }

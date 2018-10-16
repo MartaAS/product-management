@@ -17,8 +17,9 @@ export default class ProductListContainer extends React.Component {
                 stock = {stock}
                 image = {image}
                 onRemove= {this.props.onRemove}
-                onEdit= {this.props.onEdit}
-               
+                onSaveEditProduct= {this.props.onSaveEditProduct}
+                showContent={this.props.showContent} 
+                hiddenContent={this.props.hiddenContent}
               />
             )          
           }          

@@ -1,7 +1,205 @@
 body {
   margin: 0;
   padding: 0;
+  color: white;
+  text-align: center;
 }
+
+.App-header{
+  margin: 0;
+  padding: 0;
+  height: 60px;
+  text-transform: capitalize;
+  font-size: 13px;
+  background-color: black;
+  padding-top: 20px;
+}
+
+.header__title{
+  margin: 0;
+  color: #ffcf40;
+}
+
+.bloq__principal{
+  color: white;
+  background-image: url(../images/headerImg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bloq__principal-gradient{
+  background: linear-gradient(to bottom, rgba(2,2,2,2.7) 5%, rgba(89,89,89,0.6), rgba(2,2,2,2.7)); 
+   
+  min-height: 100vh;
+
+
+}
+
+.container__list-product{
+  margin-top: 0px;
+  list-style: none;
+  padding: 0;
+ 
+  display: flex;
+  flex-direction: column;
+}
+
+.list__item{
+  min-height: 150px;
+}
+
+.container__product-item{
+  display: flex;
+  flex-direction: column;
+  line-height: 2.1;
+  font-size: 18px;
+  margin-top: 40px;
+}
+
+.container__btn-item{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 15px;
+}
+
+.container__form-newProduct{
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn{
+  font-weight: bold;
+  width: 100px;
+  height: 30px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-color: transparent;
+  color: #ffcf40;
+  border-color: #ffcf40;
+  border-width: 1px;
+  text-transform: uppercase;
+  transition: all .35s cubic-bezier(.25,.46,.45,.94);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.btn:hover{
+  color: black;
+  background-color: rgba(255,207,64,0.4);
+  opacity: .9;
+  transition: all .35s cubic-bezier(.25,.46,.45,.94);
+  cursor: pointer;
+}
+
+
+.btn__new{
+  margin-top: 0;
+  margin-right: 20px;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  font-weight: bold;
+  width: 110px;
+  height: 30px;
+  margin-bottom: 20px;
+  background-color: #ffcf40;
+  color: black;
+  border-color: #ffcf40;
+  border-width: 1px;
+  text-transform: uppercase;
+  transition: all .35s cubic-bezier(.25,.46,.45,.94);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.btn__new:hover{
+  color: black;
+  background-color: rgba(255,207,64,0.9);
+
+  opacity: .9;
+  transition: all .35s cubic-bezier(.25,.46,.45);
+  cursor: pointer;
+}
+
+.btn__addNewProduct{
+  margin-top: 20px;
+}
+
+.icon__edit{
+  background-image: url(../images/edit.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 15px;
+  height: 15px;
+  background-color: transparent;
+  border: none;
+} 
+
+.icon__delete{
+  background-image: url(../images/delete.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 15px;
+  height: 15px;
+  background-color: transparent;
+  border: none;
+}
+
+.icon__save{
+  background-image: url(../images/save.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 15px;
+  height: 15px;
+  background-color: transparent;
+  border: none;
+}
+
+.icon__new{
+  background-image: url(../images/new.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 15px;
+  height: 15px;
+  background-color: transparent;
+  border: none;
+}
+
+
+input{
+  width: 70%;
+  background-color: none;
+  background: none;
+  border-bottom-color: white;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  padding-left: 11px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+}
+
+.container__product-edit{
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+hr{
+  border: none;
+  background-color: white;
+  height: 1px;
+}
+
 
 
 /* color 6FDEC4 */
@@ -10,28 +208,9 @@ body {
   display: none;
 }
 
-.btn__new{
-  background-image: url(../images/addIcon.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 30px;
-  height: 30px;
-  background-color: transparent;
-  border: none;
-}
 
-/* .btn__edit{
-  background-image: url(../images/editIcon.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 30px;
-  height: 30px;
-  background-color: transparent;
-  border: none;
-}
-
-.btn__delete{
-  background-image: url(../images/deleteIcon.png);
+/* .icon__edit:hover{
+  background-image: url(../images/editHover.png);
   background-repeat: no-repeat;
   background-size: cover;
   width: 30px;
@@ -39,6 +218,10 @@ body {
   background-color: transparent;
   border: none;
 } */
+
+
+
+
 
 /* .btn__save{
   background-image: url(../images/saveIcon.png);

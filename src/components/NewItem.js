@@ -37,20 +37,32 @@ export default class NewItem extends React.Component {
         stock: this.stock.value
       }
       this.props.onInsertNew(newProduct);  
-      this.props.hiddenContent()
+      this.hiddenContentNewProduct()
     }
+  }
+
+  showContentNewProduct(){
+    document.getElementsByClassName('container__form-newProduct')[0].classList.remove('hidden')
+  }
+
+  hiddenContentNewProduct(){
+    document.getElementsByClassName('container__form-newProduct')[0].classList.add('hidden')
   }
 
   render(){
     return(
       <div className="product-details">
-      <button className="btn__new" id="" onClick={this.props.showContent}></button>
+      <button className="btn__new" onClick={this.showContentNewProduct}>
+      <div className="icon__new"></div>
+      Nuevo</button>
       <div className="container__form-newProduct hidden">
         <input type="text" placeholder='Nombre' ref={(c) => this.name = c} />
         <input type="text" placeholder='description' ref={(c) => this.description = c} />
         <input type="text" placeholder='stock' ref={(c) => this.stock = c} />
-        <p>{this.props.image}</p>
-        <button className="btn__addNewProduct" onClick={this.onInsertNew} id="">guardar Nuevo Producto</button> 
+        <button className="btn__addNewProduct btn" onClick={this.onInsertNew}>
+        <div className="icon__save"></div>
+        guardar
+        </button> 
       </div>
       </div>
     )
