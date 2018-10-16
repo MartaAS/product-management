@@ -7,7 +7,6 @@ Install the dependencies:
 
 
 To start the application:
-Launching the app is done in the root  of the project.
 
 ```npm start```
 
