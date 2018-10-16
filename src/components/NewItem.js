@@ -52,18 +52,19 @@ export default class NewItem extends React.Component {
   render(){
     return(
       <div className="product-details">
-      <button className="btn__new" onClick={this.showContentNewProduct}>
-      <div className="icon__new"></div>
-      Nuevo</button>
-      <div className="container__form-newProduct hidden">
-        <input type="text" placeholder='Nombre' ref={(c) => this.name = c} />
-        <input type="text" placeholder='description' ref={(c) => this.description = c} />
-        <input type="text" placeholder='stock' ref={(c) => this.stock = c} />
-        <button className="btn__addNewProduct btn" onClick={this.onInsertNew}>
-        <div className="icon__save"></div>
-        guardar
-        </button> 
-      </div>
+        <button className="btn__new" onClick={this.showContentNewProduct}>
+          <div className="icon__new"></div>
+          Nuevo
+        </button>
+        <div className="container__form-newProduct hidden">
+          <input type="text" placeholder='Nombre' ref={(c) => this.name = c} />
+          <input type="text" placeholder='description' ref={(c) => this.description = c} />
+          <input type="text" placeholder='stock' ref={(c) => this.stock = c} />
+          <button className="btn__addNewProduct btn" onClick={this.onInsertNew}>
+            <div className="icon__save"></div>
+            guardar
+          </button> 
+        </div>
       </div>
     )
   }

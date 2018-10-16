@@ -72,8 +72,7 @@ export default class App extends Component {
 
   hiddenContent(id){
     document.getElementById('container__product-edit-'+id).classList.add('hidden')
-  }
-  
+  }  
 
   render() {
     return (
@@ -82,20 +81,18 @@ export default class App extends Component {
           <h1 className="header__title">almacén de discos</h1>      
         </header>
         <section className="bloq__principal">
-      <div className="bloq__principal-gradient">
-
-       <NewItem 
-          onInsertNew={this.handleInsert} 
-        />
-        <ProductListContainer 
-          allProducts={this.state.allProducts} 
-          onRemove={this.handleRemove} 
-          onSaveEditProduct={this.handleEdit}
-          showContent={this.showContent} 
-          hiddenContent={this.hiddenContent}
-        />  
-       
-        </div>
+          <div className="bloq__principal-gradient">
+            <NewItem 
+              onInsertNew={this.handleInsert} 
+            />
+            <ProductListContainer 
+              allProducts={this.state.allProducts} 
+              onRemove={this.handleRemove} 
+              onSaveEditProduct={this.handleEdit}
+              showContent={this.showContent} 
+              hiddenContent={this.hiddenContent}
+            />        
+          </div>
         </section>
       </div>
     );
