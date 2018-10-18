@@ -1,62 +1,75 @@
 body {
   margin: 0;
   padding: 0;
-  color: white;
+  padding-left: 10px;
+  padding-right: 10px;
   text-align: center;
+  background-image: url(../images/back.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
 }
 
 .App-header{
   margin: 0;
   padding: 0;
-  height: 60px;
+  height: 43px;
   text-transform: capitalize;
   font-size: 13px;
-  background-color: black;
+  background-color: transparent;
   padding-top: 20px;
 }
 
 .header__title{
   margin: 0;
-  color: #ffcf40;
+  color: rgba(36,89,89);
 }
 
-.bloq__principal{
-  color: white;
-  background-image: url(../images/headerImg.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.bloq__principal-gradient{
-  background: linear-gradient(to bottom, rgba(2,2,2,2.7) 5%, rgba(89,89,89,0.6), rgba(2,2,2,2.7));   
-  min-height: 100vh;
+h2{
+  margin-top: 10px;
+  font-size: 16px;
 }
 
 .container__list-product{
   margin-top: 0px;
+  margin-bottom: 0px;
   list-style: none;
   padding: 0; 
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .list__item{
   min-height: 150px;
+  width: 85%;
+  background: linear-gradient(to bottom, rgba(36,89,89,0.4) -19%, rgba(2,2,2,1.9));
+  color: white;
+  border-radius: 10px;
+  margin-bottom: 20px;
 }
 
 .container__product-item{
   display: flex;
   flex-direction: column;
-  line-height: 2.1;
+  align-items: center;
+  line-height: 1.7;
   font-size: 18px;
-  margin-top: 40px;
+  margin-top: 20px;
+}
+
+img{
+  margin-bottom: 10px;
 }
 
 .container__btn-item{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  margin-top: 15px;
+  margin-top: 5px;
 }
 
 .container__form-newProduct{
@@ -64,6 +77,28 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  -webkit-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
+    transform: translate(-25%,0%);
+    background-color: black;
+    color: white;
+    height: 100%;
+    width: 100%;
+    top: 0; 
+    position: fixed;
+}
+
+.modal{
+  -webkit-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  transform: translate(0%,-100%);
+  background-color: black;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  position: fixed;
 }
 
 .btn{
@@ -73,8 +108,8 @@ body {
   margin-top: 10px;
   margin-bottom: 20px;
   background-color: transparent;
-  color: #ffcf40;
-  border-color: #ffcf40;
+  color: white;
+  border-color: white;
   border-width: 1px;
   text-transform: uppercase;
   transition: all .35s cubic-bezier(.25,.46,.45,.94);
@@ -86,7 +121,7 @@ body {
 
 .btn:hover{
   color: black;
-  background-color: rgba(255,207,64,0.4);
+  background-color: rgba(36,89,89);
   opacity: .9;
   transition: all .35s cubic-bezier(.25,.46,.45,.94);
   cursor: pointer;
@@ -166,6 +201,12 @@ body {
   border: none;
 }
 
+.btn__close{
+  position: fixed;
+  right: 0;
+  margin-right: 50px;
+}
+
 input{
   width: 50%;
   background-color: none;
@@ -186,12 +227,66 @@ input{
   align-items: center;
 }
 
-hr{
-  border: none;
-  background-color: white;
-  height: 1px;
+.text__new-item{
+  margin-top: 30px;
+}
+
+.container__form-new-item{
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 13%;
+}
+
+.btn__up-image{
+  margin-top: 20px;
 }
 
 .hidden{
   display: none;
 }
+
+@media all and (min-width:500px) {
+  .container__list-product{
+    display: grid;
+		grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media all and (min-width:768px) {
+  .container__list-product{
+    grid-column-gap: 10px; 
+    grid-template-columns: repeat(3, 1fr);
+
+}
+
+  .list__item {
+    min-height: 150px;
+    width: 100%;
+  }
+
+  .header__title{
+    font-size: 60px;
+  }
+
+  h2{
+    margin-top: 44px;
+    margin-bottom: 35px;
+  }
+} 
+
+@media all and (min-width:900px) {
+  .container__list-product{
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 5px; 
+  }
+
+  .container__product-item{
+    width: 290px;
+  }
+
+  h2{
+    font-size: 40px;
+  }
+}
+

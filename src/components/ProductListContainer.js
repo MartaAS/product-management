@@ -8,18 +8,18 @@ export default class ProductListContainer extends React.Component {
     return(  
       <ul className="container__list-product">
           {
-            this.props.allProducts.map(({id, name, description, stock, image}) =>
+            this.props.allProducts.map(({id, name, description, stock, imagen}) =>
               <ProductListItem 
                 key = {id}
                 id = {id}
                 name = {name}
                 description = {description}
                 stock = {stock}
-                image = {image}
+                image = {imagen}
                 onRemove= {this.props.onRemove}
                 onSaveEditProduct= {this.props.onSaveEditProduct}
                 showContent={this.props.showContent} 
-                hiddenContent={this.props.hiddenContent}
+                hiddenContent={this.props.hiddenContent}                
               />
             )          
           }          

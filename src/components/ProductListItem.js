@@ -2,41 +2,34 @@ import React from 'react';
 
 export default class ProductListItem extends React.Component {
   
-  validate(){
-    let errorValidate = false;
+  isValid(){
+    let isValid = true;
 
-    if(this.name.value === ''){
-      errorValidate = true;
-    }
-
-    if(this.description.value === ''){
-      errorValidate = true;
-    } 
-    
-    if(this.stock.value === ''){
-      errorValidate = true;
-    }
-    
-    if(errorValidate){
+    if(/^\s+|\s+$/.test(this.name.value)
+    || this.name.value === ''  
+    || /^\s+|\s+$/.test(this.description.value)
+    || this.description.value === ''
+    || this.stock.value === ''){
+      isValid = false;
       alert('No se han rellenado todos los campos')
     }
 
     if (!/^([0-9])*$/.test(this.stock.value)){
-      alert('Rellene el campo stock con un valor numérico')
-      errorValidate = true;
+      alert('rellene el campo stock con un valor numérico')
+      isValid = false;
     }
 
-    return errorValidate;
+    return isValid;
   }
 
   onSaveEditProduct = () => {
-    if(!this.validate()){
-      const product = {
-        id : this.props.id,
-        name : this.name.value,
-        description : this.description.value,
-        stock : this.stock.value
-      }
+    if(this.isValid()){
+    const product = {
+      id : this.props.id,
+      name : this.name.value,
+      description : this.description.value,
+      stock : this.stock.value
+    }      
       this.props.onSaveEditProduct(product);  
       this.props.hiddenContent(product.id)
     } 
@@ -54,9 +47,10 @@ export default class ProductListItem extends React.Component {
     return(
       <li className="list__item">
         <div className="container__product-item">
+          <img src={`${this.props.image}`} height='100px' width='100px' alt="" />
           <span>Nombre: {this.props.name}</span>
           <span>Descripción: {this.props.description}</span>
-          <span>Stock: {this.props.stock}</span>
+          <span>Stock: {this.props.stock}</span>          
         </div>
         <div className="container__btn-item">
           <button className="btn" id={this.props.id} onClick={this.showContent}>
@@ -72,14 +66,14 @@ export default class ProductListItem extends React.Component {
           <input type="text" name="name" placeholder={this.props.name} ref={(c) => this.name = c} />
           <input type="text" name="description" placeholder={this.props.description} ref={(c) => this.description = c} />
           <input type="text" name="stock" placeholder={this.props.stock} ref={(c) => this.stock = c} />
-          <span>{this.props.image}</span>
           <button className="btn btn__save" onClick={this.onSaveEditProduct} id="">
             <div className="icon__save"></div>
             Guardar
           </button>           
-        </div> 
-        <hr></hr>
-      </li>      
+        </div>
+       
+      </li>   
+        
     )
   }
 }

@@ -31,7 +31,7 @@ export default class App extends Component {
   handleInsert(product){
     firebase.database().ref('products').push(product);
   }
-  
+
   componentDidMount(){
     const {allProducts} = this.state;
     
@@ -41,13 +41,16 @@ export default class App extends Component {
         name: snapshot.val().name,
         description: snapshot.val().description,
         stock: snapshot.val().stock,
+        imagen: snapshot.val().imagen
       })
       this.setState({allProducts});
+
+      console.log(allProducts)
     })
 
     firebase.database().ref('products').on('child_removed', snapshot => {
       for(let i=0;i<allProducts.length;i++){
-        if(allProducts[i].id == snapshot.key){
+        if(allProducts[i].id === snapshot.key){
           allProducts.splice(i,1);
         }
       }
@@ -56,7 +59,7 @@ export default class App extends Component {
 
     firebase.database().ref('products').on('child_changed', snapshot => {
       for(let i=0;i<allProducts.length;i++){
-        if(allProducts[i].id == snapshot.key){
+        if(allProducts[i].id === snapshot.key){
           allProducts[i].name = snapshot.val().name;
           allProducts[i].description = snapshot.val().description;
           allProducts[i].stock = snapshot.val().stock;
@@ -80,8 +83,9 @@ export default class App extends Component {
         <header className="App-header">   
           <h1 className="header__title">almacén de discos</h1>      
         </header>
-        <section className="bloq__principal">
+        <main className="bloq__principal">
           <div className="bloq__principal-gradient">
+          <h2>Introduce discos nuevos para llevar un seguimiento</h2>
             <NewItem 
               onInsertNew={this.handleInsert} 
             />
@@ -93,7 +97,7 @@ export default class App extends Component {
               hiddenContent={this.hiddenContent}
             />        
           </div>
-        </section>
+        </main>
       </div>
     );
   }
