@@ -50,7 +50,8 @@ export default class ProductListItem extends React.Component {
           <img src={`${this.props.image}`} height='100px' width='100px' alt="" />
           <span>Nombre: {this.props.name}</span>
           <span>Descripción: {this.props.description}</span>
-          <span>Stock: {this.props.stock}</span>          
+          <span>Stock: {this.props.stock}</span>
+          
         </div>
         <div className="container__btn-item">
           <button className="btn" id={this.props.id} onClick={this.showContent}>

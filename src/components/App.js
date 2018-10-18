@@ -44,8 +44,6 @@ export default class App extends Component {
         imagen: snapshot.val().imagen
       })
       this.setState({allProducts});
-
-      console.log(allProducts)
     })
 
     firebase.database().ref('products').on('child_removed', snapshot => {
